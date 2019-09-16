@@ -1,0 +1,13 @@
+,,,,,Hydraulic Geometry Coefficients,,,,,,Upstream Influence*,,
+NWIS id,River Name,Latitude,Longitude,Altitude,c,f,a,b,k,m,Canal/Ditch,Dam,NPDES Point Discharge
+6711565,"South Platte River At Englewood, CO",39.66,-105,5250,0.47,0.43,18.66,0.2,0.12,0.37,0,50,0
+8181500,"Medina Rv at San Antonio, TX",29.26,-98.49,439,0.48,0.39,13.54,0.18,0.15,0.43,0,0,0
+14211010,"Clackamas River Near Oregon City, OR",45.38,-122.58,0,0.23,0.42,23.66,0.14,0.19,0.44,NA,NA,NA
+,,,,,,,,,,,,,
+c,c in depth=cQ^f,,,,,,,,,,,,
+f,f in depth=cQ^f,,,,,,,,,,,,
+a,a in width=aQ^b,,,,,,,,,,,,
+b,b in width=aQ^b,,,,,,,,,,,,
+k,k in velocity=kQ^m,,,,,,,,,,,,
+m,m in velocity=kQ^m,,,,,,,,,,,,
+*,"Value corresponds to the quantile of daily average distances to 80% oxygen turnover (95, 80, 50, 0 in order of closer distance)",,,,,,,,,,,,
