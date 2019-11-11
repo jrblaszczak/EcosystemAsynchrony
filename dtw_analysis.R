@@ -1,26 +1,21 @@
 # Do dynamic time warping
 
-setwd("~/Documents/GitRepos/UrbanStreamflow")
+setwd("Users/kek25/Documents/GitRepos/EcosystemAsynchrony/Data/")
 
 library(dtw)
 library(tidyverse)
 
 Q=read.csv("BRB_Q_wy2019_merged.csv")
-
-#TwnSprings.x ==  "13185000"
-#Glenwood.y ==  "13206000"
-#Caldwell.x.x ==  "13211205"
-#Parma.y.y ==  "13213000"
-
 Q=Q[6:4353, ]
 
-alignment<-dtw(Q$Flow_Inst.y,Q$Flow_Inst.x.x,keep=TRUE)
+
+alignment<-dtw(Q$TwinSprings.Q,Q$Glenwood.Q,keep=TRUE)
 
 ## Display the warping curve, i.e. the alignment curve
 plot(alignment,type="threeway")
 
 plot(
-  dtw(Q$Flow_Inst.y.y,Q$Flow_Inst.x.x,keep=TRUE,
+  dtw(Q$TwinSprings.Q, Q$Glenwood.Q, keep=TRUE,
       step=rabinerJuangStepPattern(6,"c")),
   type="twoway",offset=-2)
 
@@ -31,31 +26,21 @@ plot(rabinerJuangStepPattern(6,"c"))
 #TwnSprings - Glenwood
 
 plot(
-  dtw(TwnSprings$Flow_Inst,Parma$Flow_Inst,keep=TRUE,
+  dtw(Q$TwnSprings.Q, Q$Parma.Q,keep=TRUE,
       step=rabinerJuangStepPattern(6,"c")),
   type="twoway",offset=-2)
 
 #Glenwood - Caldwell
 plot(
-  dtw(Glenwood$Flow_Inst[1700:4656],Caldwell$Flow_Inst[1700:4656], keep=TRUE,
+  dtw(Q$Glenwood.Q[1700:4656],Q$Caldwell.Q[1700:4656], keep=TRUE,
       step=rabinerJuangStepPattern(6,"c")),
   type="twoway")
 #Caldwell - Parma
 plot(
-  dtw(Caldwell$Flow_Inst,Parma$Flow_Inst,keep=TRUE,
+  dtw(Q$Caldwell.Q, Q$Parma.Q,keep=TRUE,
       step=rabinerJuangStepPattern(6,"c")),
   type="twoway",offset=-2)
 
-
-#Fethervill - twin sprin
-
-plot(
-  dtw(Featherville$Flow_Inst,TwnSprings$Flow_Inst, keep=TRUE,
-      step=rabinerJuangStepPattern(6,"c")),
-  type="twoway",offset=-2)
-
-plot(TwnSprings$dateTime, TwnSprings$Flow_Inst, type = 'l')
-lines(Parma$dateTime, Parma$Flow_Inst, type='l', col='blue')
 
 lcm <- alignment$localCostMatrix
 image(x = 1:nrow(lcm), y = 1:ncol(lcm), lcm)
