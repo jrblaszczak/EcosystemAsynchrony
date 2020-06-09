@@ -46,7 +46,7 @@ X <- lapply(X, function(x) xts.daily(x))
 
 
 
-
+random
 
 
 ## Example Data
